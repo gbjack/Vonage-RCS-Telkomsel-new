@@ -1,0 +1,75 @@
+---
+import { Image } from "astro:assets";
+import headerDTP from "../assets/images/header-c.jpg";
+import vonageLogo from "../assets/images/Vonage_logo.svg";
+---
+
+<header class="grid grid-cols-1 h-125 sm:h-137.5 md:h-150 xl:h-162.5 w-full">
+    
+    <Image
+        src={headerDTP}
+        alt="Header background"
+        layout="full-width"
+        decoding="async"
+        loading="eager"
+        class="col-start-1 row-start-1 w-full h-125 sm:h-137.5 md:h-150 xl:h-162.5 object-cover object-bottom"
+    />
+    
+    <div class="col-start-1 row-start-1 bg-linear-to-b from-black/80 from-30% to-transparent to-100%">
+    </div>
+    
+    <div class="col-start-1 row-start-1 z-10 w-full max-w-5xl mx-auto px-5 py-5 h-full grid grid-rows-[auto_1fr]">
+        
+        <div class="flex items-center gap-2 sm:gap-8 self-start">
+            <div class="flex flex-col cursor-default">
+                <span
+                    class="font-sans text-[8px] sm:text-[10px] font-normal text-white uppercase tracking-widest"
+                    >organiser</span
+                >
+                <Image
+                    src={vonageLogo}
+                    alt="Vonage logo"
+                    width="140"
+                    height="46"
+                    layout="constrained"
+                    decoding="async"
+                    loading="eager"
+                    class="w-35 md:w-45 h-auto transition-transform duration-300 hover:scale-105"
+                />
+            </div>
+        </div>
+
+        <div class="flex flex-col justify-center items-start">
+            <div>
+                <span class="font-sans text-white text-lg md:text-3xl lg:text-3xl font-normal tracking-tight leading-none">
+                    The Future of Messaging in APAC:
+                </span>
+                <h1 class="w-fit max-w-full sm:max-w-[85%] md:max-w-[70%] leading-none tracking-tighter mt-2 md:mt-4">
+                    How RCS Will Transform Brand Engagement
+                </h1>
+            </div>
+            
+            <div class="font-sans text-[clamp(16px,13.84px+0.602vw,20px)] text-white font-normal leading-tight">
+                <div class="py-8">
+                    <span class="block">July 23, 2026</span>
+                    <br />
+                    <a
+                        href="https://share.google/IEzdmPoZRv4g57Re6"
+                        target="_blank"
+                        class="border-b border-transparent hover:border-b hover:border-white transition-colors duration-500 cursor-pointer"
+                    >
+                        The Oak Room at Oakwood <br>Premier Cozmo, Jakarta
+                    </a>
+                </div>
+                
+                <a
+                    href="#registration-form"
+                    class="inline-block bg-white text-black font-sans font-semibold py-2 px-6 rounded-lg border-2 border-white transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 hover:bg-transparent hover:text-white"
+                >
+                    Register Now
+                </a>
+            </div>
+        </div>
+
+    </div>
+</header>

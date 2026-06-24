@@ -1,0 +1,201 @@
+@import "tailwindcss";
+
+/* 1. DEFINE CUSTOM FONT STYLES */
+@font-face {
+    font-family: "SpeziaWeb";
+    src:
+        url("../fonts/SpeziaWeb-Regular.woff2") format("woff2"),
+        url("../fonts/SpeziaWeb-Regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "SpeziaWeb";
+    src:
+        url("../fonts/SpeziaWeb-RegularItalic.woff2") format("woff2"),
+        url("../fonts/SpeziaWeb-RegularItalic.woff") format("woff");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "SpeziaWeb";
+    src:
+        url("../fonts/SpeziaWeb-SemiBold.woff2") format("woff2"),
+        url("../fonts/SpeziaWeb-SemiBold.woff") format("woff");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "SpeziaWeb";
+    src:
+        url("../fonts/SpeziaWeb-SemiBoldItalic.woff2") format("woff2"),
+        url("../fonts/SpeziaWeb-SemiBoldItalic.woff") format("woff");
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* 2. REGISTER FONT IN TAILWIND v4 */
+@theme {
+    --font-sans: "SpeziaWeb", system-ui, sans-serif;
+
+    --color-gray-1: #e8eaee;
+    --color-gray-2: #d9dce3;
+    --color-gray-3: #c2c4cc;
+    --color-gray-4: #878a91;
+    --color-gray-5: #54575e;
+    --color-white: #fff;
+    --color-black: #000;
+    --color-purple: #871fff;
+    --color-raspberry: #9e1766;
+    --color-plum: #3d0049;
+    --color-magenta: #d6219c;
+    --color-cyan: #80c7f5;
+    --color-orange: #fa7554;
+    --color-peach: #ffa68c;
+
+    --h1: clamp(2.25rem, 1.5rem + 3.5vw, 3.5rem);
+    --h2: clamp(1.25rem, 0.708rem + 2.41vw, 2.25rem);
+    --h3: clamp(1.25rem, 0.75rem + 2.41vw, 1.75rem);
+    --h4: clamp(1rem, 0.5rem + 2.41vw, 1.25rem);
+    --p: 1.125rem;
+    --li: 1.125rem;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+    h1 {
+        font-size: var(--h1);
+        @apply font-sans font-semibold leading-none text-white text-pretty;
+    }
+    h2 {
+        font-size: var(--h2);
+        @apply font-sans font-semibold leading-none text-black mb-6 text-pretty;
+    }
+    h3 {
+        font-size: var(--h3);
+        @apply font-sans font-semibold leading-tight text-black mb-4 text-pretty;
+    }
+    h4 {
+        font-size: var(--h4);
+        @apply font-sans font-semibold leading-none text-black mb-2 text-pretty;
+    }
+    p {
+        font-size: var(--p);
+        @apply font-sans font-normal leading-relaxed text-black text-pretty;
+    }
+    ul {
+        list-style-type: disc;
+        list-style-position: outside;
+        margin-left: 1rem;
+        font-family: "SpeziaWeb", sans-serif;
+    }
+    ul > :not([hidden]) ~ :not([hidden]) {
+        margin-top: 0.75rem;
+    }
+    li {
+        font-size: var(--p);
+        @apply font-sans font-normal leading-relaxed text-black text-pretty;
+    }
+
+    /* All text inputs, email, tel, number, even no type */
+    input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not(
+            [type="button"]
+        ),
+    select,
+    textarea {
+        @apply w-full font-sans text-base text-black rounded-md bg-white px-2 py-3;
+        @apply focus:border-b-raspberry focus:outline-none focus:ring-1 focus:ring-gray-5;
+        @apply disabled:bg-gray-5 disabled:cursor-not-allowed disabled:text-gray-5;
+        @apply placeholder:text-gray-5;
+    }
+
+    /* Select dropdown specific */
+    select {
+        @apply pr-8 appearance-none;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+        background-position: right 0.5rem center;
+        background-repeat: no-repeat;
+        background-size: 1.5em 1.5em;
+    }
+
+    /* Checkbox and radio styling */
+    input[type="checkbox"],
+    input[type="radio"] {
+        @apply rounded border-gray-3 text-black focus:ring-2 focus:ring-gray-5 focus:ring-offset-0;
+    }
+
+    input[type="checkbox"] {
+        @apply rounded;
+    }
+
+    input[type="radio"] {
+        @apply rounded-full;
+    }
+
+    /* Make sure checkboxes don't get full width */
+    input:where([type="checkbox"], [type="radio"]) {
+        @apply w-auto;
+    }
+
+    /* Labels */
+    label {
+        @apply block font-sans text-base text-black mb-1;
+    }
+
+    /* Form container spacing */
+    form > div {
+        @apply mb-4;
+    }
+
+    /* Last child of form shouldn't have margin */
+    form > div:last-child {
+        @apply mb-0;
+    }
+
+    /* Submit button */
+    button[type="submit"],
+    input[type="submit"] {
+        @apply w-fit rounded-lg bg-black border-2 border-black px-6 py-3 font-sans text-white font-semibold;
+        @apply hover:bg-transparent hover:text-black focus:outline-none focus:ring-2 focus:ring-gray-5 focus:ring-offset-2;
+        @apply disabled:bg-gray-3 disabled:cursor-not-allowed;
+        @apply transition-colors duration-500 cursor-pointer;
+    }
+}
+
+@utility container {
+    width: 100%;
+    max-width: 64rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    margin: 0 auto;
+}
+
+@utility section-spacing {
+    margin-bottom: clamp(2.5rem, 2.229rem + 1.205vw, 3rem);
+}
+
+@utility no-number-spinner {
+    appearance: none;
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+        appearance: none;
+    }
+    &::-moz-appearance-textfield {
+        appearance: textfield;
+    }
+}
+
+@utility mySpace-y {
+    & > :not([hidden]) ~ :not([hidden]) {
+        @apply mt-5;
+    }
+}
